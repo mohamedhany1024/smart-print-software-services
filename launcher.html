@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launcher</title>
+    <link rel="stylesheet" href="res/css/clearUI.css">
+    <link rel="stylesheet" href="res/css/launcher.css">
+
+</head>
+<body>
+    <div class="backgroundHome" id="bg"></div>
+    <div class="screen" id="appsMenu">
+        <div class="titleBar">
+            <p>Welcome !</p>
+        </div>
+
+        <div class="grid2">
+            <div class="card3" onclick="openApp('CMS')">
+                <img src="res/img/users.png" width="90">
+                <p>Client Management System</p>
+            </div>
+            <div class="card3" onclick="openScreen('tools')">
+                <img src="res/img/tools.png" width="90">
+                <p>PDF Tools</p>
+            </div>
+        </div>
+    </div>
+    <div class="screen" id="main">
+      
+
+        <div class="container">
+            <div class="gridC">
+                <img src="res/img/logo.png" width="150" class="logo" id="logo">
+            </div>
+            <div class="logoText">
+                <h3>Smart Print</h3>
+                <p>Software Services</p>
+            </div>
+            <div class="gridC">
+                <img src="res/img/spinner.svg" width="50" class="loader" id="loader">
+            </div>
+        </div>
+    </div>
+    <div class="screen" id="tools">
+        <div class="titleBar">
+            <img title="Back" class="tBtn" src="../res/img/back.png" width="90" onclick="openScreen('appsMenu')">
+            <p>Tools</p>
+        </div>
+        <div class="gridC">
+            <div class="card3" onclick="openApp('BEC')">
+                <img src="res/img/crop.png" width="90">
+                <p>Bulk Edge Cleaner</p>
+            </div>
+        </div>
+    </div>
+    <script src="res/js/shellUtils.js"></script>
+    <script src="res/js/launcher.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEC</title>
+    <link rel="stylesheet" href="../res/css/clearUI.css">
+    <link rel="stylesheet" href="../res/css/BEC.css">
+    
+</head>
+<body>
+    <div class="backgroundHome"></div>
+    <div class="dialogueBox" id="dBox1">
+        <p>Processing...</p>
+        <div class="cont"><img src="../res/img/Spinner-1s-200px.svg" width="50px"> <p id="progress"></p></div>
+        <p>Please do not close this window or any progress will be lost!</p>
+    </div>
+    <div class="dialogueBox" id="dBox2">
+        <p>Finished</p>
+        <div class="cont"><img src="../res/img/icons8-done-96.png" width="50px"> <p>Your File Has Finished Processing.</p></div>
+        <button class="dialogueBtn" onclick="window.location.href='BEC.html'">Done</button>
+    </div>
+    <div class="dialogueBox" id="dBox3">
+        <h2>Warning!</h2>
+        <p>your system has less than 6GB of ram. you may experience slow-downs, freezes or crashes. please consider Using a lower quality preset.</p>
+        <button class="dialogueBtn" onclick="closeDialogue('dBox3')">Ok</button>
+    </div>
+    <div class="screen" id="main">
+        <div class="titleBar">
+            <img title="Back" class="tBtn" src="../res/img/back.png" width="90" onclick="backToHome()">
+            <p>Bulk Edge Cleaner</p>
+        </div>
+        <div class="gridC">
+            <input class="btn" type="file" accept=".pdf" id="filePicker">
+        </div>
+        <div class="gridC">
+            <button class="btn" onclick="start()">Next</button>
+        </div>
+    </div>
+    <div class="screen" id="config">
+        <div class="titleBar">
+            <p>Configuration</p>
+        </div>
+        <p>Page Choice:</p>
+        <input type="number" placeholder="Even" name="evenNo" value="2" id="evenNo" class="editText editNo">
+        <input type="number" placeholder="Odd" name="oddNo" value="3" class="editText editNo" id="oddNo">
+        <p>Quality:</p>
+        <select name="" id="qualitySelect" class="btn">
+            <option value="1">Low</option>
+            <option value="1.5" selected>Normal</option>
+            <option value="2">High</option>
+            <option value="3">Very High</option>
+        </select>
+        <div class="cont btn">
+            <img src="../res/img/warn.png" width="40"><p id="warnP">Warning: Higher quality files occupy more storage space, so be careful with this setting</p>
+        </div>
+        <br>
+        <button class="btn" onclick="start2()">Next</button>
+    </div>
+    <div class="screen" id="editor">
+        
+        <div class="titleBar">
+            <img title="Back" class="tBtn" src="../res/img/back.png" width="90" onclick="openScreen('main')">
+            <p id="fileNameDisp"></p>
+        </div>
+        
+        <div class="sideBar">
+            <input type="number" id="iTop" placeholder="top">
+            <input type="number" id="iBottom" placeholder="bottom">
+            <input type="number" id="iRight" placeholder="right">
+            <input type="number" id="iLeft" placeholder="left">
+
+
+            <button class="btn" onclick="next()">Next</button>
+            <button class="btn" onclick="apply()">apply</button>
+        </div>
+        <canvas id="the-canvas"></canvas>
+        
+        
+    </div>
+    
+    <script src="../res/js/libs/pdfjs/build/pdf.js"></script>
+    <script src="../res/js/libs/pdfjs/build/pdf.worker.js"></script>
+    <script src="../res/js/libs/jspdf/jspdf.umd.js"></script>
+    <script src="../res/js/shellUtils.js"></script>
+    <script src="../res/js/BEC.js"></script>
+</body>
+</html>

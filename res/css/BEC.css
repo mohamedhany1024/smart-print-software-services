@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Roboto-light'; /*a name to be used later*/
+    src: url("../fonts/Roboto/Roboto-Light.ttf"); /*URL to font*/
+}
+
+* {
+    font-family: Roboto-light;
+}
+
+.sideBar {
+    border-radius: 6px;
+    box-shadow: 0 3px 7px -2px rgba(0, 0, 0, 0.233);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+	/*backdrop-filter: blur(3px);
+	background-color: rgba(255, 255, 255, 0.1);*/
+    background-image: url('../img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+	/*background-position: center;*/
+    
+    display: flexbox;
+    position: sticky;
+    top: 0;
+    left: 80%;
+    /*height: 100%;*/
+    width: 20%;
+    z-index: 3;
+}
+
+p {
+    color: white;
+}
+
+#warnP {
+    display: inline-block;
+}
+
+.cont {
+    display: flex;
+    align-items: center;
+}
+
+.editNo {
+    display: flex;
+    max-width: 7ch;
+}
+
+.dialogueBox {
+    z-index: 5;
+}
+
+.dialogueBox p {
+    color: black;
+}
+
+.dialogueBox button {
+    color: black;
+}

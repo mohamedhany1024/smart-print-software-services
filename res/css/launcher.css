@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+
+}
+
+.splash {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: fixed;
+
+    background-color: white;
+    transition: all 0.4s ease;
+}
+
+.logo {
+    
+    filter: saturate(0);
+    transition: all 0.4s ease-out;
+}
+
+.logoText p {
+    text-align: center;
+}
+.logoText h3 {
+    text-align: center;
+}
+
+.container {
+    padding-top: 20vh;
+}
+
+.loader {
+    opacity: 1;
+    transition: all 0.4s ease-out;
+}
