@@ -15,7 +15,10 @@ let oTop = 0;
 let oBottom = 0;
 let oRight = 0;
 let oLeft = 0;
-window.jsPDF = window.jspdf.jsPDF
+window.jsPDF = window.jspdf.jsPDF;
+
+let successSound = new Audio();
+successSound.src = "..//sounds/success.ogg";
 
 //var pdfjsLib = window['libs/pdfjs/build/pdf'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'libs/pdfjs/build/pdf.worker.js';
@@ -332,6 +335,7 @@ function bulkProcess() {
                                                 setTimeout(()=> {
                                                     closeDialogue("dBox1");
                                                     openDialogue("dBox2");
+                                                    successSound.play();
                                                     pdf.save("res.pdf");
                                                 }, 2000);
                                                 //console.log("am i done??");
