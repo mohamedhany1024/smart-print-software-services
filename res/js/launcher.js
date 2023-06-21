@@ -17,5 +17,5 @@ function splashAnim() {
 splashAnim();
 
 function openApp(appName) {
-    window.location.href = `layouts/${appName}.html`;
+    window.open(`layouts/${appName}.html`, "_blank");
 }
