@@ -18,7 +18,7 @@ let oLeft = 0;
 window.jsPDF = window.jspdf.jsPDF;
 
 let successSound = new Audio();
-successSound.src = "..//sounds/success.ogg";
+successSound.src = "../res/sounds/success.ogg";
 
 //var pdfjsLib = window['libs/pdfjs/build/pdf'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'libs/pdfjs/build/pdf.worker.js';
@@ -263,7 +263,7 @@ async function mahrosa(pageNumero) {
         //console.log("oR: "+oRight);
     }
 }
-const pdf = new jsPDF();
+const pdf = new jsPDF('p', 'mm', 'a4', true);
 let img;
 let page = 1;
 async function toPDF() {
@@ -271,7 +271,7 @@ async function toPDF() {
     //console.log("adding ");
     //console.log(img);
     //window.open(img, "_blank");
-    pdf.addImage(img, 'png', 0, 0, 210, 297);
+    pdf.addImage(img, 'PNG', 0, 0, 210, 297);
     if (page < pageNo) {
         pdf.addPage();
     }
