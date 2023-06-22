@@ -325,7 +325,7 @@ function bulkProcess() {
                                                 
                                                     
                                                         setTimeout(()=> {
-                                                            document.getElementById("progress").innerText = `${(currentPage/pageNo) * 100}%`;
+                                                            document.getElementById("progress").innerText = `${Math.trunc((currentPage/pageNo) * 100)}%`;
                                                             bulkProcess();
                                                         }, 50);
                                                     
