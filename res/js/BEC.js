@@ -32,7 +32,7 @@ function start() {
     if (file != null) {
         openScreen("config");
     } else {
-        alert("No File selected. Please select a file first");
+        openDialogue("dBox4");
     }
 }
 
