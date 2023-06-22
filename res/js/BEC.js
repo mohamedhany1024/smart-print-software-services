@@ -36,6 +36,8 @@ function start() {
     }
 }
 
+let pageParityState = -1;
+
 function start2() {
     if (file != null) {
         let qualitySelect = document.getElementById("qualitySelect");
@@ -64,9 +66,11 @@ function start2() {
         //canvas setup
         
         
-        pdfjsLib.disableWorker = true;
+        if (pageParityState == -1) {
+            //pageParityState = 0;
+            pdfjsLib.disableWorker = true;
 
-        //
+        
         let loadingTask = pdfjsLib.getDocument({url : fileURL});
         loadingTask.promise.then(
             function getPdf(_pdfDoc) {
@@ -93,6 +97,7 @@ function start2() {
                 );
             }
         );
+        }
         
 
     } else {
@@ -100,13 +105,14 @@ function start2() {
     }
 }
 
-let pageParityState = 0;
+
 let pageNo = 0;
 let currentPage = 1;
 
 
 function next() {
-    if (pageParityState == 0) {
+    if (pageParityState == -1) {
+        pageParityState = 0;
         let loadingTask = pdfjsLib.getDocument({url : fileURL});
         loadingTask.promise.then(
             function getPdf(_pdfDoc) {
@@ -127,7 +133,7 @@ function next() {
                         renderTask.promise.then ( 
                             ()=> {
                                 console.log("rendering finished");
-                                pageParityState = 1;
+                                //pageParityState = 1;
 
                                 
                             }
@@ -137,7 +143,7 @@ function next() {
             }
         );
     } else {
-        pageParityState = 0;
+        pageParityState = -1;
         openDialogue("dBox1");
         bulkProcess();
     }
@@ -246,6 +252,78 @@ function apply() {
 
 
     
+}
+
+function reset() {
+    if (pageParityState == -1) {
+        eTop = 1;
+        eBottom = 1;
+        eLeft = 1;
+        eRight = 1;
+        let loadingTask = pdfjsLib.getDocument({url : fileURL});
+        loadingTask.promise.then(
+            function getPdf(_pdfDoc) {
+                pdfDoc = _pdfDoc;
+
+                pdfDoc.getPage(parseInt(ePage)).then(
+                    function (page) {
+                        var viewport = page.getViewport({scale: quality});
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        // Render PDF page into canvas context
+                        var renderContext = {
+                            canvasContext: ctx,
+                            viewport: viewport
+                        };
+                        var renderTask = page.render(renderContext);
+
+                        renderTask.promise.then ( 
+                            ()=> {
+                                console.log("rendering finished");
+                                //pageParityState = 1;
+
+                                
+                            }
+                        );
+                    }
+                );
+            }
+        );
+    } else if (pageParityState == 0) {
+        oTop = 1;
+        oBottom = 1;
+        oLeft = 1;
+        oRight = 1;
+        let loadingTask = pdfjsLib.getDocument({url : fileURL});
+        loadingTask.promise.then(
+            function getPdf(_pdfDoc) {
+                pdfDoc = _pdfDoc;
+
+                pdfDoc.getPage(parseInt(oPage)).then(
+                    function (page) {
+                        var viewport = page.getViewport({scale: quality});
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        // Render PDF page into canvas context
+                        var renderContext = {
+                            canvasContext: ctx,
+                            viewport: viewport
+                        };
+                        var renderTask = page.render(renderContext);
+
+                        renderTask.promise.then ( 
+                            ()=> {
+                                console.log("rendering finished");
+                                //pageParityState = 1;
+
+                                
+                            }
+                        );
+                    }
+                );
+            }
+        );
+    }
 }
 
 async function mahrosa(pageNumero) {
