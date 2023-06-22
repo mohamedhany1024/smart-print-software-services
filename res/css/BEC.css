@@ -56,3 +56,9 @@ p {
 .dialogueBox button {
     color: black;
 }
+
+.controlCont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
