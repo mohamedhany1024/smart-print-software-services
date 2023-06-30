@@ -113,6 +113,7 @@ let currentPage = 1;
 function next() {
     if (pageParityState == -1) {
         pageParityState = 0;
+        load_em(0);
         let loadingTask = pdfjsLib.getDocument({url : fileURL});
         loadingTask.promise.then(
             function getPdf(_pdfDoc) {
@@ -326,6 +327,8 @@ function reset() {
     }
 }
 
+
+
 async function mahrosa(pageNumero) {
     if (pageNumero % 2 == 0) {
         bottomErase(eBottom);
@@ -446,4 +449,49 @@ filePicker.onchange = e => {
 }
 
 
+
+function save_em() {
+    //localStorage.clear();
+    localStorage.setItem("eTop", eTop);
+    localStorage.setItem("eBottom", eBottom);
+    localStorage.setItem("eRight", eRight);
+    localStorage.setItem("eLeft", eLeft);
+
+    localStorage.setItem("oTop", oTop);
+    localStorage.setItem("oBottom", oBottom);
+    localStorage.setItem("oRight", oRight);
+    localStorage.setItem("oLeft", oLeft);
+}
+
+function load_em(parity) {
+    if (parity == -1) {
+        
+        document.getElementById("iTop").value = parseInt(localStorage.getItem("eTop"));
+        document.getElementById("iBottom").value = parseInt(localStorage.getItem("eBottom"));
+        document.getElementById("iRight").value = parseInt(localStorage.getItem("eRight"));
+        document.getElementById("iLeft").value = parseInt(localStorage.getItem("eLeft"));
+    } else {
+        //alert(parseInt(localStorage.getItem(eTop)));
+        document.getElementById("iTop").value = parseInt(localStorage.getItem("oTop"));
+        document.getElementById("iBottom").value = parseInt(localStorage.getItem("oBottom"));
+        document.getElementById("iRight").value = parseInt(localStorage.getItem("oRight"));
+        document.getElementById("iLeft").value = parseInt(localStorage.getItem("oLeft"));
+    }
+}
+
+load_em(-1);
+
+setInterval(()=> {
+    if (pageParityState == -1) {
+        eTop = document.getElementById("iTop").value;
+        eBottom = document.getElementById("iBottom").value;
+        eRight = document.getElementById("iRight").value;
+        eLeft = document.getElementById("iLeft").value;
+    } else {
+        oTop = document.getElementById("iTop").value;
+        oBottom = document.getElementById("iBottom").value;
+        oRight = document.getElementById("iRight").value;
+        oLeft = document.getElementById("iLeft").value;
+    }
+}, 1000);
 
