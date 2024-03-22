@@ -1,5 +1,5 @@
 function splashAnim() {
-    document.getElementById("bg").style.display = "none";
+    //document.getElementById("bg").style.display = "none";
     setTimeout(()=> {
         document.getElementById("logo").style.filter = "saturate(1)";
         document.getElementById("loader").style.opacity = "0";

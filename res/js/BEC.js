@@ -16,7 +16,9 @@ let oBottom = 0;
 let oRight = 0;
 let oLeft = 0;
 window.jsPDF = window.jspdf.jsPDF;
-
+changeProperty('--accent-color', 'rgb(255, 200, 0)');
+changeProperty('--secondary-color', 'magenta');
+changeProperty('--contained-text-color', 'white');
 let successSound = new Audio();
 successSound.src = "../res/sounds/success.ogg";
 

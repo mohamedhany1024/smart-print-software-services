@@ -26,11 +26,29 @@ body {
     text-align: center;
 }
 
-.container {
+.container2 {
     padding-top: 20vh;
 }
 
 .loader {
     opacity: 1;
     transition: all 0.4s ease-out;
+}
+
+.tBtn {
+    transition: background-color 0.4s ease-out;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.tBtn:hover {
+    background-color: rgba(0, 0, 0, 0.219);
+    
+}
+
+.card2 {
+    display: flex;
+    flex-direction: row;
+ 
+    
 }
