@@ -10,8 +10,8 @@ function splashAnim() {
                 openScreen("appsMenu");
                 document.getElementById("bg").style.display = "block";
             }, 500);
-        }, 2000);
-    }, 6000);
+        }, 1000);
+    }, 2000);
 }
 
 splashAnim();
